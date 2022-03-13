@@ -11,14 +11,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * This program permutes a set of N letters (char data type);
- * such letters are input from the user in a (N x M) matrix.
+ * This program permutes a given set of N letters of char primitive data type;
+ * such letters are input from the user in an (N x M) matrix.
  * Once the program calculates all the possible combinations with those letters,
- * it reads a dictionary file and checks whether they form (or not) a valid word.
+ * it reads a dictionary file, and checks whether they form (or not) a valid word.
  * 
- * Complexity of this program: O(V) O(V) O(V).
+ * Algorithm implemented: Depth First Search.
+ * Complexity time: O(V) O(V) O(V).
  * 
- * NOTE: below arrays detail all eight possible movements from a 
+ * NOTE: arrays detail all eight possible movements from a 
  * cell (top, right, bottom, left, and four diagonal moves).
  * 
  * @author Kevin Mora
@@ -61,7 +62,6 @@ public class PossibleWords {
                         j + col[k], path);
             }
         }
-        
         // Backtrack :: mark current node as unprocessed
         processed[i][j] = false;
     }
@@ -92,7 +92,6 @@ public class PossibleWords {
                 searchBoggle(board, words, result, processed, i, j, "");
             }
         }
- 
         return result;
     }
     
@@ -106,16 +105,15 @@ public class PossibleWords {
         };
         
         // Specify data path :: obtain words in dictionary
-		String filename = "src/dictionaries/englishDictionary.txt";
-		Scanner sc = new Scanner(new File(filename));
-		List<String> lines = new ArrayList<String>();
-		while (sc.hasNextLine()) {
-			lines.add(sc.nextLine());
-		}
+	String filename = "src/dictionaries/englishDictionary.txt";
+	Scanner sc = new Scanner(new File(filename));
+	List<String> lines = new ArrayList<String>();
+	while (sc.hasNextLine()) {
+		lines.add(sc.nextLine());
+	}
 		
-		String[] arr = lines.toArray(new String[0]);
-        Set<String> words = Stream.of(arr)
-                                .collect(Collectors.toSet());
+	String[] arr = lines.toArray(new String[0]);
+        Set<String> words = Stream.of(arr).collect(Collectors.toSet());
         
         // Compare input data with dictionary :: print
         Set<String> validWords = searchBoggle(board, words);
