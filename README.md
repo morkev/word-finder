@@ -1,5 +1,5 @@
 # Word-Finder
-Finds all the possible words you can create from any dictionary with a given set of letters.
+Finds all the possible words you can create from any dictionary with a matrix containing a given set of N chars.
 
 A few days ago, I was scrolling through my Twitter feed, and found an interesting puzzle published by <i>The New York Times</i>. Since Java is my main language, I decided to find a solution in such – the majority of the approaches I saw were cumbersome, too slow, or written in JavaScript in order to create browser applications.
 
